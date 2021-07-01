@@ -1,0 +1,42 @@
+<div class="main-container">
+
+    <div class="search-box-container" >
+        <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="Search...">
+              <span class="icon is-small is-left">
+                <i class="fas fa-search text-danger"></i>
+              </span>
+            </p>
+          </div>
+          <i class="fas fa-plus newText" style="color:blueviolet" (click)="addNewNote();">Add New Note</i>
+    </div>
+     
+    
+    <div class="notes-list">
+    <!-- 
+    <app-note-card [title]="'First Notes'" [body]="'First notes bodyyyyyyyyyyyy'"></app-note-card>
+    <app-note-card [title]="'second Notes'" [body]="'second notes bodyyyyyyyyyyyy'"></app-note-card> -->
+
+         <div class="card-body" style="width: 350px;height:auto;">
+            <br/>
+        
+            <div class="card">
+            <h4 class="card-title" >infomation</h4>
+            <p class="card-text">jdihdjhskjz</p>
+            <br/><br/>
+            <div class="" style="text-align: left; ">
+                <button type="button" class="btn btn-default" style="background-color: yellowgreen;" routerLink="/homelink/trash">Trash</button>
+            </div>
+        </div>
+        </div> 
+     
+    
+    <app-note-child  *ngFor=" let i of  noteDataArr" [nData]="i"  (notify)="deleteNoteElement($event)"> </app-note-child>
+    
+    
+    </div>
+    
+    
+    
+    </div>

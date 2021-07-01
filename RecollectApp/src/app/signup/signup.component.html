@@ -1,5 +1,5 @@
 <br/>
-<form>
+<form #signup = "ngForm">
     <div class="container"  style="background-color:lightgoldenrodyellow">
         <div class="row main">
             <div class="col-md-6">
@@ -15,38 +15,62 @@
                 </div><br/>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="First name"/>
+                        <input type="text"
+                                 class="form-control"
+                                  placeholder="First name"
+                                  name="firstName"
+                                  [(ngModel)]="signupModelForm.firstName"
+                                  #firstName = "ngModel"
+                                  
+                                  />
+
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Last name"/>
+                        <input type="text"
+                             class="form-control" 
+                               placeholder="Last name"
+                                name="lastName"
+                                [(ngModel)]="signupModelForm.lastName"
+                                #lastName = "ngModel"/>
                     </div>
                 </div><br/>
                 <div class="row">
                     <div class="col-md-12 input-group">
-                        <input type="text" class="form-control" placeholder="Username"/>
+                        <input type="text" 
+                            class="form-control"
+                             placeholder="emailaddress"
+                             name="email"
+                                  [(ngModel)]="signupModelForm.email"
+                                  #email = "ngModel"
+                             />
                         <div class="input-group-append">
                             <span class="input-group-text">@gmail.com</span>
                         </div>
                         <div class="col-md-12">
-                            <small class="form-text text-muted">You can use letters, numbers & periods</small>
+                            <small class="form-text text-muted">You can use letters, numbers</small>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <button class="btn btn-default text-primary">Use my current gmil address instead</button>
-                    </div>
+                    </div> -->
                 </div><br/>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Password"/>
+                        <input type="text"
+                         class="form-control" 
+                         placeholder="Password"
+                         name="password"
+                                  [(ngModel)]="signupModelForm.password"
+                                  #password = "ngModel"/>
                     </div>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Confirm"/>
                     </div>
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <small class="form-text text-muted">Use 8 or more characters with a mix of letters, numbers & symbols</small>
-                    </div>
+                    </div> -->
                 </div><br/>
                 <div class="row">
                     <div class="col-md-12">
@@ -56,13 +80,33 @@
                             </label>
                         </div>
                     </div>
-                </div><br/><br/>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" 
+                             class="form-control"
+                                placeholder="contactnumber"
+                                  name="contactNumber"
+                                  [(ngModel)]="signupModelForm.contactNumber"
+                                  #contactNumber = "ngModel"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" 
+                        class="form-control"
+                         placeholder="address"
+                             name="address"
+                                  [(ngModel)]="signupModelForm.address"
+                                  #address = "ngModel"/>
+                    </div>
+                </div><br/>
                 <div class="row">
                     <div class="col-md-6">
                         <button class="btn btn-default text-primary" routerLink="/login">Log In</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary text-white" style="float:right" routerLink="/login">Sign In</button>
+                        <button class="btn btn-primary text-white" style="float:right" (click) = "addUser()">Sign In</button>
                     </div>
                 </div>
             </div>

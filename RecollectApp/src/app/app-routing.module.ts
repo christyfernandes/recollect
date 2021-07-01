@@ -6,14 +6,26 @@ import { NotesListComponent } from './Pages/notes-list/notes-list.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
+  { 
+    path:'',
+    loadChildren: () =>
+      import('./validate/validate.module').then((m) => m.ValidateModule),
+    },
 
-  {path : '' , component: LoginComponent},
+    { 
+      path:'homelink',
+      loadChildren: () =>
+        import('./home/home.module').then((m) => m.HomeModule),
+      },
+
+
+ /* {path : '' , component: LoginComponent},
   {path : 'login' , component: LoginComponent},
   {path : 'signup' , component: SignupComponent},
   {path : 'mainComponent' , component : MainLayoutComponent , children : [
     { path :'' , component: NotesListComponent}
     
-    ]},
+    ]},*/
   
   
   ];

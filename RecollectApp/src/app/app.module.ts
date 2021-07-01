@@ -11,6 +11,9 @@ import { NoteCardComponent } from './note-card/note-card.component';
 import { MainLayoutComponent } from './Pages/main-layout/main-layout.component';
 import { NotesListComponent } from './Pages/notes-list/notes-list.component';
 import { FormsModule } from '@angular/forms';
+import{  HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     NoteCardComponent,
     MainLayoutComponent,
-    NotesListComponent
+    NotesListComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,127 @@
+<br/>
+<form #signup = "ngForm">
+    <div class="container"  style="background-color:lightgoldenrodyellow">
+        <div class="row main">
+            <div class="col-md-6">
+                <div class="row google">
+                    <div class="col-md-12">
+                        <img style="height: 25px;"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div clss="col-md-12">
+                        <h1 style="color: green; font-weight: bold;font-size: 24px;">Create your Recollect Account</h1>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text"
+                                 class="form-control"
+                                  placeholder="First name"
+                                  name="firstName"
+                                  [(ngModel)]="signupModelForm.firstName"
+                                  #firstName = "ngModel"
+                                  
+                                  />
+
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text"
+                             class="form-control" 
+                               placeholder="Last name"
+                                name="lastName"
+                                [(ngModel)]="signupModelForm.lastName"
+                                #lastName = "ngModel"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12 input-group">
+                        <input type="text" 
+                            class="form-control"
+                             placeholder="emailaddress"
+                             name="email"
+                                  [(ngModel)]="signupModelForm.email"
+                                  #email = "ngModel"
+                             />
+                        <!-- <div class="input-group-append">
+                            <span class="input-group-text">@gmail.com</span>
+                        </div> -->
+                        <div class="col-md-12">
+                            <small class="form-text text-muted">You can use letters, numbers</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- <div class="col-md-12">
+                        <button class="btn btn-default text-primary">Use my current gmil address instead</button>
+                    </div> -->
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text"
+                         class="form-control" 
+                         placeholder="Password"
+                         name="password"
+                                  [(ngModel)]="signupModelForm.password"
+                                  #password = "ngModel"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Confirm"/>
+                    </div>
+                    <!-- <div class="col-md-12">
+                        <small class="form-text text-muted">Use 8 or more characters with a mix of letters, numbers & symbols</small>
+                    </div> -->
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="">Show password
+                            </label>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" 
+                             class="form-control"
+                                placeholder="contactnumber"
+                                  name="contactNumber"
+                                  [(ngModel)]="signupModelForm.contactNumber"
+                                  #contactNumber = "ngModel"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" 
+                        class="form-control"
+                         placeholder="address"
+                             name="address"
+                                  [(ngModel)]="signupModelForm.address"
+                                  #address = "ngModel"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-default text-primary" routerLink="/newLogin">Log In</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary text-white" style="float:right" (click) = "addUser()">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="account_image responsive" [src]="account"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="padding-left: 94px;">One account. All of Google working for you.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
