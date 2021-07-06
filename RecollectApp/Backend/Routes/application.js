@@ -30,11 +30,10 @@ router.post("/signup" , (req,res,next) => {
 		console.log(' signup method hash : '+ hash);
 		
 		const userData = new User({
-			userName: req.body.userName,
-			loginName: req.body.loginName,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
 			password: hash,
 			email: req.body.email,
-			userType: req.body.userType,
 			contactNumber: req.body.contactNumber,
 			address: req.body.address 
    

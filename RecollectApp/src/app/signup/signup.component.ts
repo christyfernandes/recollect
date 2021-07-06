@@ -10,7 +10,7 @@ import { SingupData } from '../singup-data';
 export class SignupComponent implements OnInit {
   account:any="/assets/image/account.svg";
 
-  signupModelForm = new SingupData('','','','','','');
+  // signupModelForm = new SingupData('','','','','','');
   
   constructor(private auth:AuthService) { }
 
@@ -18,14 +18,14 @@ export class SignupComponent implements OnInit {
   }
 
 
-  addUser()
-  {
-    this.auth.save(this.signupModelForm).subscribe((response) =>{
+  // addUser()
+  // {
+  //   this.auth.save(this.signupModelForm).subscribe((response) =>{
 
-      alert('New User Registerd Succeesfully !');
-    });
+  //     alert('New User Registerd Succeesfully !');
+  //   });
 
-    console.log(" ----  Data  ----- = "+ this.signupModelForm.contactNumber);
-  }
+  //   console.log(" ----  Data  ----- = "+ this.signupModelForm.contactNumber);
+  // }
 
 }

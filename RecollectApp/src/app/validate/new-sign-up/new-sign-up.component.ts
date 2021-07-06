@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { SingupData } from 'src/app/singup-data';
 
@@ -13,7 +14,7 @@ export class NewSignUpComponent implements OnInit {
 
   signupModelForm = new SingupData('','','','','','');
   
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +22,15 @@ export class NewSignUpComponent implements OnInit {
 
   addUser()
   {
+
+
+    console.log('firstName='+this.signupModelForm.firstName);
+    console.log('lastName='+this.signupModelForm.lastName);
+    
     this.auth.save(this.signupModelForm).subscribe((response) =>{
 
       alert('New User Registerd Succeesfully !');
+      this.router.navigate(['/newLogin'])
     });
 
     console.log(" ----  Data  ----- = "+ this.signupModelForm.contactNumber);
