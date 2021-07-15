@@ -6,12 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { MainLayoutComponent } from './Pages/main-layout/main-layout.component';
 import { NotesListComponent } from './Pages/notes-list/notes-list.component';
 import { FormsModule } from '@angular/forms';
-import{  HttpClientModule } from '@angular/common/http';
+import{  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorPopupComponent } from './error-popup/error-popup.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -20,10 +23,10 @@ import{  HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    SignupComponent,
     NoteCardComponent,
     MainLayoutComponent,
     NotesListComponent,
+    ErrorPopupComponent,
     
     
   ],
@@ -32,9 +35,14 @@ import{  HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
+  bootstrap: [AppComponent],
+  entryComponents :[ErrorPopupComponent]
 })
 export class AppModule { }

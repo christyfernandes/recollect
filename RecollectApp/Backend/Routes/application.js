@@ -19,7 +19,7 @@ router.get('/user',(req,res,next)=>{
  
 });
 
-//signin
+//signup
 router.post("/signup" , (req,res,next) => {
 	console.log(' signup method .. 1');
 	
@@ -64,9 +64,10 @@ router.post("/signup" , (req,res,next) => {
 
 router.post("/loginOne", (req, res) => {
    console.log('**** loginOne *** start ');
+   console.log('**** loginOne *** start ', req.body.password);
    
    let fetchedUser;
-   User.findOne({ userName : req.body.userName })
+   User.findOne({ email : req.body.email })
    .then(user => {
    if (!user) {
    return res.status(401).json({
@@ -74,6 +75,8 @@ router.post("/loginOne", (req, res) => {
    });
    }
    fetchedUser = user;
+   console.log('***fetchedUser***',fetchedUser);
+   console.log('***fetchedUser***',req.body.password);
    return bcrypt.compare(req.body.password, user.password);
    })
    .then(result => {
@@ -83,7 +86,7 @@ router.post("/loginOne", (req, res) => {
    });
    }
    const token = jwt.sign(
-   { email: fetchedUser.userName  },
+   { email: fetchedUser.email  },
    "secret_this_should_be_longer",
    { expiresIn: "5m" }
    );

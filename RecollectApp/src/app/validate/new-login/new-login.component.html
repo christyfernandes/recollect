@@ -1,5 +1,4 @@
 <br/>
-<form>
     <div class="container"  style="background-color: lightcyan;">
         <div class="row main">
             <div class="col-md-6">
@@ -13,45 +12,41 @@
                         <h3>Login to your Recollect Account</h3>
                     </div>
                 </div><br/>
-               
-                
-                
-                <div class="row">
-                    <div class="col-md-12 input-group">
-                        <input type="text" class="form-control" placeholder="Username"/>
-                        <!-- <div class="input-group-append">
-                            <span class="input-group-text">@gmail.com</span>
-                        </div> -->
-                       
-                        
-                    </div>
-                </div>
-                <br/>
-              
-                
+                <form [formGroup]="loginDForm">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Password"/>
+                        <input type="text"
+                         name = "email" 
+                         formControlName = "email" 
+                         placeholder="email">
+
+                        <span class = "errormsg" *ngIf ="loginDForm.get('email')?.invalid && submitFlag == true">please enter email </span>
+                </div>
+                
+                </div><br/>
+                            
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="password" 
+                        name = "password" 
+                        formControlName = "password"
+                        placeholder="Password"/>
+                        <span class = "errormsg" *ngIf ="loginDForm.get('password')?.invalid && submitFlag == true">please enter correct password </span>
+
                     </div>
                 
                 </div><br/>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">Show password
-                            </label>
-                        </div>
-                    </div>
-                </div><br/><br/>
+                
+                <br/>
                 <div class="row">
                     <div class="col-md-6">
                         <button class="btn btn-default text-primary" routerLink="/newSignUp">Sign Up</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary text-white" style="float:right" (click) = "login()">Log In</button>
+                        <button class="btn btn-primary text-white" style="float:right"  type = "submit" (click) = "login()">Log In</button>
                     </div>
                 </div>
+                </form>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -65,5 +60,4 @@
             </div>
         </div>
     </div>
-</form>
 
