@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NoteCardComponent } from '../note-card/note-card.component';
+ 
 import { DefaultComponent } from './default/default.component';
 import { NoteComponent } from './note/note.component';
 import { RemainderComponent } from './remainder/remainder.component';

@@ -17,10 +17,28 @@
 <div class="row">
     <div style="float: left; background-color: lightslategray; color: blue">
 
-        
+        <div class="side-bar">
+            <header>Menu</header>
+            <ul>
+                <li> <a routerLink ="note"><i class="fa fa-bars"></i></a>
+                
+                </li>
+                <li> <a routerLink ="note"><i class="fa fa-sticky-note-o">Notes</i></a>
+                
+                </li>
+                <li> <a routerLink ="note"><i class="fa fa-bell-o">Reminder</i></a>
+                
+                </li>
+                <li> <a routerLink ="note"><i class=" fa fa-trash">Trash</i></a>
+                
+                </li>
+                
+                
+            </ul>
+        </div>
         
 
-        <tr>
+        <!-- <tr>
             <td style="padding: 20px" > <a routerLink ="note">  Note</a></td>
         </tr>
         <tr>
@@ -33,11 +51,11 @@
     
         <tr>
             <td style="padding: 20px"> <a routerLink =""> Logout</a></td>
-        </tr>
+        </tr> -->
         
 
     </div>
-    <div style="width : 70%; float: left; padding-left : 5px ">
+    <div style="width : 70%; float: left; padding-left : 5px ; overflow: auto ;">
         <router-outlet></router-outlet>
     </div>
 

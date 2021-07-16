@@ -3,6 +3,8 @@ var router = express.Router();
 
 const User  = require("../models/user");
 
+const Note  = require("../models/notedata");
+
 const jwt = require("jsonwebtoken");
 
 var bcrypt = require('bcryptjs');
@@ -18,6 +20,47 @@ router.get('/user',(req,res,next)=>{
 
  
 });
+
+
+
+
+//addNew Note start--------------
+ 
+
+router.post("/addNewNote" , (req,res,next) => {
+	console.log(' signup method .. 1');
+	 
+   const noteData = new Note({
+      userId: req.body.userId,
+      indexPosition: req.body.indexPosition,
+      title: req.body.title,
+      details: req.body.details,
+      placeholderTitle: req.body.placeholderTitle,
+      placeholder: req.body.placeholder 
+   
+  });
+  console.log(' signup method  occured.. 2');
+  noteData.save().
+  then (result => 
+  {
+	    console.log(' signup method  --- Start 3');
+		res.status(201).json({
+									message: "Note added successfully",
+									result : result
+							});
+  })
+  .catch( err => { 
+  
+	console.log('Error occured.. '+ err);
+	
+	res.status(500).json({ message: err.toString()});
+  
+  });	
+ 
+	
+});
+
+//add New Note End ------------------
 
 //signup
 router.post("/signup" , (req,res,next) => {
@@ -93,7 +136,7 @@ router.post("/loginOne", (req, res) => {
    return  res.status(200).json({
    token: token,
    user : fetchedUser,
-   expiresIn : 60
+   expiresIn : 3600
    
    /*,
    "expiresIn": 3600  */
@@ -108,6 +151,8 @@ router.post("/loginOne", (req, res) => {
    });
 
 
+
+   router.get("/getAllNoteData")
 
 
    

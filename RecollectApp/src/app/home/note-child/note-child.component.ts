@@ -1,4 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter,ViewChild,ElementRef,Renderer2 } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { NoteData } from 'src/app/note-data';
 
 
@@ -41,7 +42,7 @@ export class NoteChildComponent implements OnInit {
   bodyText : ElementRef<HTMLElement> = {} as ElementRef;
 
   currentRate = 8;
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private authService : AuthService) {
               this.title;
    }
 
@@ -65,6 +66,14 @@ export class NoteChildComponent implements OnInit {
   {
     this.notify.emit(this.nData);
 
+  }
+
+  saveNote(){
+    this.authService.addnote(this.nData).subscribe((response) =>{
+
+      alert('Note Saved !');
+       
+    });
   }
 
 }

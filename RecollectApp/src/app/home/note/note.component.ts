@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { NoteData } from 'src/app/note-data';
 
 @Component({
@@ -8,14 +9,14 @@ import { NoteData } from 'src/app/note-data';
 })
 export class NoteComponent implements OnInit {
 
-  noteD : any = new NoteData("","","","","New Title","Add Details Here..");
+  noteD : any = new NoteData("","",0,"","","New Title","Add Details Here..");
 
 
   noteDataArr : any = [ ];
 
 
 
-  constructor() { }
+  constructor( private authService : AuthService) { }
 
   ngOnInit(): void {
   }
@@ -28,14 +29,14 @@ export class NoteComponent implements OnInit {
     // console.log(" Length of Araay -- "+ this.noteDataArr.length);
     // this.noteD.indexPosition = this.noteDataArr.length;
     console.log(" After this.noteD.indexPosition -- "+ this.noteD.indexPosition);
-    this.noteDataArr.push(new NoteData("","this.noteDataArr.length","","","New Title","Add Details Here.."));
+    this.noteDataArr.push(new NoteData("","",this.noteDataArr.length,"","","New Title","Add Details Here.."));
   }
 
 
   deleteNoteElement(cData : NoteData)
   {
-    console.log("****This = "+this.noteD.indexPosition);
-    this.noteDataArr.splice(this.noteD.indexPosition, 1);  
+    console.log("****This index = "+cData.indexPosition);
+    this.noteDataArr.splice(cData.indexPosition, 1);  
     //this.noteDataArr = this.noteDataArr;
   }
 

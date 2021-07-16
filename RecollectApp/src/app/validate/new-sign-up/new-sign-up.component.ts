@@ -12,7 +12,7 @@ export class NewSignUpComponent implements OnInit {
 
   account:any="/assets/image/account.svg";
 
-  signupModelForm = new SingupData('','','','','','');
+  signupModelForm = new SingupData('','','','','','','');
   
   constructor(private auth:AuthService, private router: Router ) { }
 

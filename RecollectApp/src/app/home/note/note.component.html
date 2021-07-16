@@ -10,6 +10,7 @@
             </p>
           </div>
           <i class="fas fa-plus newText" style="color:blueviolet" (click)="addNewNote();">Add New Note</i>
+          
     </div>
      
     
@@ -18,7 +19,7 @@
     <app-note-card [title]="'First Notes'" [body]="'First notes bodyyyyyyyyyyyy'"></app-note-card>
     <app-note-card [title]="'second Notes'" [body]="'second notes bodyyyyyyyyyyyy'"></app-note-card> -->
 
-         <div class="card-body" style="width: 350px;height:auto;">
+         <!-- <div class="card-body" style="width: 350px;height:auto;">
             <br/>
         
             <div class="card">
@@ -36,7 +37,7 @@
             </div>
             </div>
         </div>
-        </div> 
+        </div>  -->
      
     
     <app-note-child  *ngFor=" let i of  noteDataArr" [nData]="i"  (notify)="deleteNoteElement($event)"> </app-note-child>

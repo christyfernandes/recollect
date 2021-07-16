@@ -8,7 +8,7 @@ import { NoteData } from 'src/app/note-data';
 })
 export class NotesListComponent implements OnInit {
 
-  noteD : any = new NoteData("","","","","New Title","Add Details Here..");
+  noteD : any = new NoteData("","",0,"","","New Title","Add Details Here..");
 
 
   noteDataArr : any = [ ];
@@ -28,7 +28,7 @@ export class NotesListComponent implements OnInit {
     // console.log(" Length of Araay -- "+ this.noteDataArr.length);
     // this.noteD.indexPosition = this.noteDataArr.length;
     console.log(" After this.noteD.indexPosition -- "+ this.noteD.indexPosition);
-    this.noteDataArr.push(new NoteData("","this.noteDataArr.length","","","New Title","Add Details Here.."));
+    this.noteDataArr.push(new NoteData("","",this.noteDataArr.length,"","","New Title","Add Details Here.."));
   }
 
 

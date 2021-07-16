@@ -1,5 +1,6 @@
 export class SingupData {
     constructor(
+        public _id : any,
         public firstName: any,
         public lastName:any,
         public email: any,
