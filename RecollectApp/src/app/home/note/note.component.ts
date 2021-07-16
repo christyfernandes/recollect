@@ -19,6 +19,18 @@ export class NoteComponent implements OnInit {
   constructor( private authService : AuthService) { }
 
   ngOnInit(): void {
+    console.log('*****inti******');
+    this.authService.getNoteData().subscribe((p: NoteData[])=>{
+       console.log('data received3 ::--- '+p);
+       if(p != null){
+        console.log('inside if notnull')
+        this.noteDataArr = p;
+
+       }
+
+       
+    })
+
   }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-default',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit {
+  userEmailID: String = "R@gmail.com";
 
-  constructor() { }
+  constructor(private authService : AuthService) {
+
+   }
 
   ngOnInit(): void {
+
+    this.userEmailID = this.authService.getUserEmailId();
+
   }
 
 }

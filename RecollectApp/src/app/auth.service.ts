@@ -157,6 +157,8 @@ localStorage.setItem("userRole", userRole);
 localStorage.setItem("loggedInUser",  JSON.stringify(loggedInUser));
 console.log("***********loggedInUser._id *********** " + loggedInUser._id);
 localStorage.setItem("userId",  loggedInUser._id);
+localStorage.setItem("userEmailId",  loggedInUser.email);
+   
    
 
 }
@@ -204,6 +206,25 @@ addnote(nData:NoteData){
   
 }
 
+
+// getNoteData function is for fetching all notes
+getNoteData() : any{
+  console.log("inside this function getnotedata()");
+  let d = new Date();
+  let hostUrl = 'http://localhost:3000/apps/getAllNoteData/';
+  let uid = localStorage.getItem("userId");
+  console.log("***********uid._id *********** " + uid);
+  hostUrl = hostUrl + uid;
+  return this.http.get(hostUrl);
+}
+//getUserEmailId function is use for diplay user account email id
+getUserEmailId() : any{
+
+  
+console.log('inside getuseremailid function');
+  console.log("email = "+localStorage.getItem('userEmailId')  );
+  return localStorage.getItem('userEmailId');  
+}
 
 
 

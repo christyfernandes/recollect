@@ -1,25 +1,37 @@
-<br/>
-<br/>
-<br/>
-<div style="text-align: center;color: yellow;font-weight: 400;font-size: 100px;"
-    >  <i class="far fa-bell"></i>
 
+<div #container class="note-card-container">
+
+
+<br/>
+<br/>
+
+
+<div class="card" style="width: 25rem;">
+    
+    <div class="card-body">
+      <h5 class="card-title">
+
+            <input type="text" class="form-control" placeholder="Title"
+            >
+
+      </h5>
+      <p class="card-text">
+        
+        <textarea type="text"  class="form-control" style="height: 100px;" name="details" 
+        >
+
+        </textarea>
+        
+      </p>
+      <a routerLink="/homelink/note" class="btn btn-primary"><i  aria-hidden="true"></i>Note</a> &nbsp;&nbsp;
+
+      <a routerLink="/homelink/trash" class="btn btn-primary">Trash</a>&nbsp;&nbsp;
+
+      
+      
     </div>
-    &nbsp;&nbsp;&nbsp;
-    <div class="card" style="width: 300px;padding: 50px; ">
-        <p class="date">1/7/2021</p>
-        <h4 class="card-title" >infomation</h4>
-        <p class="card-text">first project</p>
-        <br/><br/>
-        <div class="row">
-        <div class="col-md-6" style="text-align: left; ">
-            <button type="button" class="btn btn-default" style="background-color: yellowgreen;" routerLink="/homelink/trash">Trash</button>
-        </div>
-        <div class="col-md-6" style="text-align: left; ">
-            <button type="button" class="btn btn-default" style="background-color: rgb(228, 163, 23);" 
-                                   routerLink="/homelink/remainder"><i class="far fa-bell" style="color: yellowgreen;"></i>
-                                </button>
-        </div>
-        </div>
-    </div>
+  </div>
+
+  <br/>
+  </div>
 

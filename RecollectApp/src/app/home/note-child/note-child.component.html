@@ -2,68 +2,60 @@
 
 
 
-    <div class="note-card-content">
+   
+<br/>
 
-      <tr>
-        <td class="tdCourcesStar">
-           <input type="checkbox" value="0">Public
-          &nbsp; <input type="checkbox" value="0">Private
-           <br/>
-        </td>
-      </tr>
-<br/>
-      <tr>
-        <td class="tdCourcesStar">
-           <a href="">English</a> &nbsp; <a href="">Hindi</a>  &nbsp; <a href="">Marathi</a>
-        </td>
-      </tr>
-<br/>
-          <tr>
-            <td class="tdCourcesStar">
-              <i class="fa fa-star text-warning" aria-hidden="true"></i>
-              <i class="fa fa-star text-warning" aria-hidden="true"></i>
-              <i class="fa fa-star text-warning" aria-hidden="true"></i>
-              <i class="fa fa-star text-warning" aria-hidden="true"></i>
-              <i class="fa fa-star text-warning" aria-hidden="true"></i>
-            </td>
-          </tr>
+
+<div class="card" style="width: 25rem;">
     
-
-        <h1 class="note-card-title">  
-            <input type="text" class="new-input-style"  style="width: 90%;border:none;
-            padding-top:15px;padding-bottom:15px" [placeholder]="nData.placeholderTitle" name="title" [(ngModel)]="nData.title" /> 
-
-        </h1>
+    <div class="card-body">
+          <tr>
+              <td class="tdCourcesStar">
+                <input type="checkbox" value="0">Public
+                &nbsp; <input type="checkbox" value="0">Private
+                <br/>
+              </td>
+          </tr>
         <br/>
- 
-            <div  #bodyText  class="note-card-body" >
+            <tr>
+              <td class="tdCourcesStar">
+                <a href="">English</a> &nbsp; <a href="">Hindi</a>  &nbsp; <a href="">Marathi</a>
+              </td>
+            </tr>
+            <br/>
+            <tr>
+              <td class="tdCourcesStar">
+                <i class="fa fa-star text-warning" aria-hidden="true"></i>
+                <i class="fa fa-star text-warning" aria-hidden="true"></i>
+                <i class="fa fa-star text-warning" aria-hidden="true"></i>
+                <i class="fa fa-star text-warning" aria-hidden="true"></i>
+                <i class="fa fa-star text-warning" aria-hidden="true"></i>
+              </td>
+            </tr><br/>
+      <h5 class="card-title">
+
+            <input type="text" class="form-control" placeholder="Title" [(ngModel)]="nData.title">
+
+      </h5>
+      <p class="card-text">
         
-        <p>
+        <textarea type="text"  class="form-control" style="height: 100px;" name="details" [(ngModel)]="nData.details">
 
-            <textarea class="form-control"   id="comment"  [placeholder]="nData.placeholder" name="details" [(ngModel)]="nData.details"></textarea>
-           
+        </textarea>
+        
+      </p>
+      <a routerLink="/homelink/remainder" class="btn btn-primary"><i class="fa fa-bell-o" aria-hidden="true"></i></a> &nbsp;&nbsp;
 
-        </p>
+      <a routerLink="/homelink/trash"class="btn btn-primary "><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
 
-       
-        <div style="text-align: right;">
-            <i class="fas fa-save fa-md save-button" style="color:green;" title="Save" (click)="saveNote()"> &nbsp;Save</i>
-            &nbsp;
-            <!-- <i class="far fa-trash-alt fa-lg x-button" style="color:red;" (click)="deleteThisNote();"></i> -->
-        </div>
-            
-      
-
-         <div #truncator class=" " >
+      <a (click)="deleteThisNote()" class="btn btn-primary "><i class="fa fa-times" style="color: white;"></i></a>&nbsp;&nbsp;
+      <a (click)="saveNote()" class="btn btn-primary" ><i class ="fa fa-floppy-o" style="color: white;"></i></a>&nbsp;&nbsp;
 
 
-         </div>
-  
     </div>
+  </div>
 
-    <div class="x-button" (click)="deleteThisNote();">
+  <br/>
 
-        
-   </div>
-
-</div>
+  
+  

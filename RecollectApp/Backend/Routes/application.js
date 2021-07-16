@@ -152,7 +152,19 @@ router.post("/loginOne", (req, res) => {
 
 
 
-   router.get("/getAllNoteData")
+   router.get("/getAllNoteData/:id",(req,res,next)=>{
+     console.log("inside get all note data function");
+     console.log("id = "+ req.params.id);
+     Note.find({userId : req.params.id}).
+     then(documents => { 
+       console.log("NoteData = "+documents);
+       res.json(
+         documents
+       );
+     });
+   });
+
+   
 
 
    
