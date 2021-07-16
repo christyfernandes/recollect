@@ -1,0 +1,63 @@
+<br/>
+    <div class="container"  style="background-color: lightcyan;">
+        <div class="row main">
+            <div class="col-md-6">
+                <div class="row google">
+                    <div class="col-md-12">
+                        <img style="height: 25px;"/>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div clss="col-md-12">
+                        <h3>Login to your Recollect Account</h3>
+                    </div>
+                </div><br/>
+                <form [formGroup]="loginDForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text"
+                         name = "email" 
+                         formControlName = "email" 
+                         placeholder="email">
+
+                        <span class = "errormsg" *ngIf ="loginDForm.get('email')?.invalid && submitFlag == true">please enter email </span>
+                </div>
+                
+                </div><br/>
+                            
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="password" 
+                        name = "password" 
+                        formControlName = "password"
+                        placeholder="Password"/>
+                        <span class = "errormsg" *ngIf ="loginDForm.get('password')?.invalid && submitFlag == true">please enter correct password </span>
+
+                    </div>
+                
+                </div><br/>
+                
+                <br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-default text-primary" routerLink="/newSignUp">Sign Up</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary text-white" style="float:right"  type = "submit" (click) = "login()">Log In</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
