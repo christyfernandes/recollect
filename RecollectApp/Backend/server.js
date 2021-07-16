@@ -25,9 +25,7 @@ app.use((req, res, next) => {
 
 
 app.use('/apps',appRoute);
-app.get('/first',function(req,res){
-    res.send("first Hello World..!");
-});
+
 app.listen(3000,function(){
     console.log("express Server Listening at port 3000...");
 });
