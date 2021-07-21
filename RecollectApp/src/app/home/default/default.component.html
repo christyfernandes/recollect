@@ -22,19 +22,19 @@
         <div class="side-bar">
             <header>Menu</header>
             <ul>
-                <li> <a routerLink ="note"><i class="fa fa-bars"></i></a>
+                <li> <a routerLink ="/homelink"><i class="fa fa-bars"></i></a>
                 
                 </li>
                 <li> <a routerLink ="note"><i class="fa fa-sticky-note-o">&nbsp; &nbsp;Notes</i></a>
                 
                 </li>
-                <li> <a routerLink ="remainder"><i class="fa fa-bell-o">&nbsp; &nbsp;Remainder</i></a>
+                <li> <a routerLink ="remainder"><i class="fa fa-bell-o">&nbsp; &nbsp;Reminder</i></a>
                 
                 </li>
                 <li> <a routerLink ="trash"><i class=" fa fa-trash">&nbsp; &nbsp;Trash</i></a>
                 
                 </li>
-                <li> <a routerLink =""><i class=" fa fa-sign-out">&nbsp; &nbsp;Logout</i></a>
+                <li> <a (click)="logOut()"><i class=" fa fa-sign-out">&nbsp; &nbsp;Logout</i></a>
                 
                 </li>
                 
@@ -60,7 +60,7 @@
         
 
     </div>
-    <div style="width : 70%; float: left; padding-left : 5px ; ">
+    <div style="width : 70%; float: left;  ">
         <div style="width: 100%; height: 50%;"  >
             <router-outlet></router-outlet>
 

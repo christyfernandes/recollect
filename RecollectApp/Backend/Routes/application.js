@@ -36,7 +36,10 @@ router.post("/addNewNote" , (req,res,next) => {
       title: req.body.title,
       details: req.body.details,
       placeholderTitle: req.body.placeholderTitle,
-      placeholder: req.body.placeholder 
+      placeholder: req.body.placeholder,
+      reminder:  req.body.reminder,
+      draft: req.body.draft,
+      trash: req.body.trash
    
   });
   console.log(' signup method  occured.. 2');
@@ -165,7 +168,87 @@ router.post("/loginOne", (req, res) => {
    });
 
    
+   
+   router.put("/updatereminder/:id",(req,res,next)=>{
+    console.log("inside get all note data function");
+    console.log("id = "+ req.params.id);
+    const noteData = new Note({
+      _id : req.params.id,
+      userId: req.body.userId,
+      indexPosition: req.body.indexPosition,
+      title: req.body.title,
+      details: req.body.details,
+      placeholderTitle: req.body.placeholderTitle,
+      placeholder: req.body.placeholder,
+      reminder:  req.body.reminder,
+      draft: req.body.draft,
+      trash: req.body.trash
+   
+  });
+
+  Note.updateOne({_id : req.params.id},noteData).
+  then(result=>{
+  
+      res.status(201).json({
+        message: "user update remainder successfully",
+        result:result,
+        
+      });
+   
+
+ 
+
+  
+  });
+  });
 
 
+
+
+     //// get Draft Data
+
+     router.get("/getDraftNoteData/:id",(req,res,next)=>{
+      console.log("inside get all note data function");
+      console.log("id = "+ req.params.id);
+      Note.find({userId : req.params.id, draft:1,reminder:0,trash:0}).
+      then(documents => { 
+        console.log("NoteData = "+documents);
+        res.json(
+          documents
+        );
+      });
+    });
+  
+  
+    //// get Reminder Data
+  
+    router.get("/getReminderNoteData/:id",(req,res,next)=>{
+      console.log("inside  getReminderNoteData note data function");
+      console.log("id = "+ req.params.id);
+      Note.find({userId : req.params.id, draft:0,reminder:1,trash:0}).
+      then(documents => { 
+        console.log("NoteData = "+documents);
+        res.json(
+          documents
+        );
+      });
+    });
+  
+  
+    //// get Trash Data
+  
+    router.get("/getTrasheData/:id",(req,res,next)=>{
+      console.log("inside get all note data function");
+      console.log("id = "+ req.params.id);
+      Note.find({userId : req.params.id, draft:0,reminder:0,trash:1}).
+      then(documents => { 
+        console.log("NoteData = "+documents);
+        res.json(
+          documents
+        );
+      });
+    });
+  
+  
    
 module.exports = router;

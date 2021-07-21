@@ -42,7 +42,8 @@ export class NewLoginComponent implements OnInit {
 
 
        let loginF = new Logindata(this.loginDForm.value.email,this.loginDForm.value.password);
-       alert("X =" + loginF.email);
+      
+       
        this.auth.loginmethod(loginF);
       // this.router.navigate(['/homelink']);
      }

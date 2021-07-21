@@ -112,7 +112,7 @@ export class AuthService {
   
           /*This is a logic to navigate to Home Page.. we can add any component */
         
-        this.router.navigate(['/homelink']);
+        this.router.navigate(['/homelink/note']);
         
       })
 
@@ -130,13 +130,17 @@ export class AuthService {
     this.authStatusListener.next(false);
 
     /*This function clears all stored data inside local storage */
+ 
     localStorage.clear();
-    localStorage.removeItem("token");
-    localStorage.removeItem("expiration");
-    localStorage.removeItem("userRole");
+localStorage.removeItem("userId");
+localStorage.removeItem("userEmailId");
+localStorage.removeItem("loggedInUser");
+localStorage.removeItem("token");
+localStorage.removeItem("expiration");
+localStorage.removeItem("userRole");
 
      /*This is a logic to navigate to Login Page.. we can add any component */
-    this.router.navigate(['/login']);
+    this.router.navigate(['/newLogin']);
 }
 
 
@@ -167,6 +171,9 @@ localStorage.setItem("userEmailId",  loggedInUser.email);
 /*This function clears all local storage data */
 private clearAuthData() {
 localStorage.clear();
+localStorage.removeItem("userId");
+localStorage.removeItem("userEmailId");
+localStorage.removeItem("loggedInUser");
 localStorage.removeItem("token");
 localStorage.removeItem("expiration");
 localStorage.removeItem("userRole");
@@ -191,20 +198,7 @@ userId: userId
 
 
 
-//*** Add Note URL  */
 
-addnote(nData:NoteData){
-  console.log("***********localStorage.getItem *********** " + localStorage.getItem("userId"));
-  let uid = localStorage.getItem("userId");
-  console.log("***********uid._id *********** " + uid);
-  nData.userId = uid;
-
-    let body : any = nData;
-    let d = new Date();
-    let hostUrl = 'http://localhost:3000/apps/addNewNote?v='+d.toLocaleTimeString();
-    return this.http.post(hostUrl,body);
-  
-}
 
 
 // getNoteData function is for fetching all notes
@@ -217,15 +211,138 @@ getNoteData() : any{
   hostUrl = hostUrl + uid;
   return this.http.get(hostUrl);
 }
+
 //getUserEmailId function is use for diplay user account email id
 getUserEmailId() : any{
-
   
 console.log('inside getuseremailid function');
   console.log("email = "+localStorage.getItem('userEmailId')  );
   return localStorage.getItem('userEmailId');  
 }
 
+
+
+//*** Add Note URL  */
+
+addnote(nData:NoteData){
+  console.log("***********localStorage.getItem *********** " + localStorage.getItem("userId"));
+  let uid = localStorage.getItem("userId");
+  console.log("***********uid._id *********** " + uid);
+  nData.userId = uid;
+  nData.reminder=0;
+  nData.draft=1;
+  nData.trash=0;
+
+    let body : any = nData;
+    let d = new Date();
+    let hostUrl = 'http://localhost:3000/apps/addNewNote?v='+d.toLocaleTimeString();
+     this.http.post(hostUrl,body).subscribe(response => {
+      this.router.navigate(['/homelink/note']);
+    });
+  
+}
+
+
+
+// saveReminder fuction for save note in remainder page to database
+saveReminder(nData:NoteData){
+
+  console.log("note save in reminder"+ nData);
+  nData.reminder=1;
+  nData.draft=0;
+  nData.trash=0;
+  let body : any = nData;
+    let ld = new Date();
+    let hostUrl = 'http://localhost:3000/apps/updatereminder/';
+    let uid = nData._id;
+    hostUrl = hostUrl + uid;
+   
+    return this.http.put<{ user :SingupData}>(hostUrl, body).subscribe(response => 
+      {
+        console.log("save remainder successfully");
+        this.router.navigate(['/homelink/remainder']);
+      });
+
+  
+
+}
+saveDraft(nData:NoteData){
+  console.log("note save in draft"+ nData);
+  nData.reminder=0;
+  nData.draft=1;
+  nData.trash=0;
+  let body : any = nData;
+    let ld = new Date();
+    let hostUrl = 'http://localhost:3000/apps/updatereminder/';
+    let uid = nData._id;
+    hostUrl = hostUrl + uid;
+   
+    return this.http.put<{ user :SingupData}>(hostUrl, body).subscribe(response => 
+      {
+        console.log("save trash successfully");
+        this.router.navigate(['/homelink/note']);
+      });
+}
+saveTrash(nData:NoteData){
+  console.log("note save in trash"+ nData);
+  nData.reminder=0;
+  nData.draft=0;
+  nData.trash=1;
+  let body : any = nData;
+    let ld = new Date();
+    let hostUrl = 'http://localhost:3000/apps/updatereminder/';
+    let uid = nData._id;
+    hostUrl = hostUrl + uid;
+   
+    return this.http.put<{ user :SingupData}>(hostUrl, body).subscribe(response => 
+      {
+        console.log("save trash successfully");
+        this.router.navigate(['/homelink/trash']);
+      });
+
+  
+
+}
+
+
+
+
+
+///getReminder Page Data
+
+// getNoteData function is for fetching all notes
+getReminderData() : any{
+  console.log("inside this function getReminderData()");
+  let d = new Date();
+  let hostUrl = 'http://localhost:3000/apps/getReminderNoteData/';
+  let uid = localStorage.getItem("userId");
+  console.log("***********uid._id *********** " + uid);
+  hostUrl = hostUrl + uid;
+  return this.http.get(hostUrl);
+}
+
+
+// getNoteData function is for fetching all notes
+getDraftNotesData() : any{
+  console.log("inside this function getDraftNotesData()");
+  let d = new Date();
+  let hostUrl = 'http://localhost:3000/apps/getDraftNoteData/';
+  let uid = localStorage.getItem("userId");
+  console.log("***********uid._id *********** " + uid);
+  hostUrl = hostUrl + uid;
+  hostUrl= hostUrl+'?v='+d.toLocaleDateString();
+  return this.http.get(hostUrl);
+}
+
+getTrashData() : any{
+  console.log("inside this function getTrashData()");
+  let d = new Date();
+  let hostUrl = 'http://localhost:3000/apps/getTrasheData/';
+  let uid = localStorage.getItem("userId");
+  console.log("***********uid._id *********** " + uid);
+  hostUrl = hostUrl + uid;
+  return this.http.get(hostUrl);
+}
 
 
  

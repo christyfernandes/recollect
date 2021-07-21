@@ -1,5 +1,7 @@
 <br/>
 <form #signup = "ngForm">
+    
+    
     <div class="container"  style="background-color:lightgoldenrodyellow">
         <div class="row main">
             <div class="col-md-6">
@@ -17,40 +19,57 @@
                     <div class="col-md-6">
                         <input type="text"
                                  class="form-control"
-                                  placeholder="First name"
+                                  placeholder="First Name"
                                   name="firstName"
                                   autocomplete="off" required
                                   [(ngModel)]="signupModelForm.firstName"
-                                  #firstName = "ngModel"
+                                  #firstName = "ngModel" 
+                                  [class.is-invalid] = "firstName.invalid && firstName.touched"
+                                  pattern="[a-zA-Z ]*"  
                                   
                                   />
+                                <span *ngIf="firstName.invalid && firstName.touched" class= "input-group-addon  errormsg" >
+                                     <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                                    First Name must be alphabets  </span>
+                             
 
                     </div>
                     <div class="col-md-6">
                         <input type="text"
                              class="form-control" 
-                               placeholder="Last name"
+                               placeholder="Last Name"
                                 name="lastName"
+                                autocomplete="off" required
                                 [(ngModel)]="signupModelForm.lastName"
-                                #lastName = "ngModel"/>
+                                #lastName = "ngModel"
+                                [class.is-invalid] = "lastName.invalid && lastName.touched"
+                                pattern="[a-zA-Z ]*"  />
+
+                                <span *ngIf="lastName.invalid && lastName.touched" class= "input-group-addon  errormsg" >
+                                    <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                                   Last Name must be alphabets  </span>
+                            
                     </div>
                 </div><br/>
                 <div class="row">
                     <div class="col-md-12 input-group">
-                        <input type="text" 
+                        <input type="email" 
                             class="form-control"
-                             placeholder="emailaddress"
+                             placeholder="Email address"
                              name="email"
+                             autocomplete="off" required
                                   [(ngModel)]="signupModelForm.email"
                                   #email = "ngModel"
-                             />
-                        <!-- <div class="input-group-append">
-                            <span class="input-group-text">@gmail.com</span>
-                        </div> -->
-                        <div class="col-md-12">
-                            <small class="form-text text-muted">You can use letters, numbers</small>
-                        </div>
-                    </div>
+                                  [class.is-invalid] = "email.invalid && email.touched"
+                                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                   />
+                            
+                             <span *ngIf="email.invalid && email.touched" class= "input-group-addon  errormsg" >
+                                <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                               Please enter valid email  </span>
+
+                                                                 
+                           </div>
                 </div>
                 <div class="row">
                     <!-- <div class="col-md-12">
@@ -59,21 +78,47 @@
                 </div><br/>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text"
+                        <input type="password"
                          class="form-control" 
                          placeholder="Password"
                          name="password"
+                         autocomplete="off" required
                                   [(ngModel)]="signupModelForm.password"
-                                  #password = "ngModel"/>
+                                  #password = "ngModel"
+                                  [class.is-invalid] = "password.invalid && password.touched"
+                                  />
+                                  <span *ngIf="password.invalid && password.touched" class= "input-group-addon  errormsg" >
+                                    <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                                   Please enter your passwword  </span>
                     </div>
                     <div class="col-md-6">
-                        <input type="password" class="form-control" placeholder="Confirm password"/>
+                        <input type="password"
+                         class="form-control" 
+                         placeholder="Confirm password" 
+                         name="confirmpassword"
+                         [(ngModel)]="signupModelForm.confirmpassword"
+                        #confirmpassword = "ngModel"
+                        autocomplete="off" required
+                        [class.is-invalid] = "confirmpassword.invalid && confirmpassword.touched "
+                        
+                        (blur) = "checkConfirmPassword()" />
+                        <span *ngIf="confirmpassword.invalid && confirmpassword.touched" class= "input-group-addon  errormsg" >
+                            <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                           Please enter your confirm password  </span>
+
+                        
+                           <span *ngIf="passwordErrorFlag " class= "input-group-addon  errormsg" >
+                            <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                        Password and confirm password not matching   
+                         </span>
+                          
+
                     </div>
                     <!-- <div class="col-md-12">
                         <small class="form-text text-muted">Use 8 or more characters with a mix of letters, numbers & symbols</small>
                     </div> -->
                 </div><br/>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <div class="form-check">
                             <label class="form-check-label">
@@ -81,15 +126,23 @@
                             </label>
                         </div>
                     </div>
-                </div><br/>
+                </div><br/> -->
                 <div class="row">
                     <div class="col-md-12">
                         <input type="text" 
                              class="form-control"
                                 placeholder="contactnumber"
+                                autocomplete="off" required
                                   name="contactNumber"
                                   [(ngModel)]="signupModelForm.contactNumber"
-                                  #contactNumber = "ngModel"/>
+                                  #contactnumber = "ngModel"
+                                  [class.is-invalid] = "contactnumber.invalid && contactnumber.touched"
+                                  minlength="10"
+                                  maxlength="10"
+                                  pattern="[0-9]*"/>
+                                  <span *ngIf="contactnumber.invalid && contactnumber.touched" class= "input-group-addon  errormsg" >
+                                    <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                                   Please enter your correct contact number  </span>
                     </div>
                 </div><br/>
                 <div class="row">
@@ -98,16 +151,23 @@
                         class="form-control"
                          placeholder="address"
                              name="address"
+                             autocomplete="off" required
                                   [(ngModel)]="signupModelForm.address"
-                                  #address = "ngModel"/>
+                                  #address = "ngModel" required
+                                   [class.is-invalid] = "address.invalid && address.touched"
+                                  pattern="[a-zA-Z ]*"/>
+                                  <span *ngIf = "address .invalid && address.touched" class= "input-group-addon  errormsg" >
+                                    <i class="fa fa-fw fa-info-circle " style="height:10px;" aria-hidden="true" ></i>
+                                   Please enter your address  </span>
                     </div>
                 </div><br/>
                 <div class="row">
                     <div class="col-md-6">
                         <button class="btn btn-default text-primary" routerLink="/newLogin">Log In</button>
                     </div>
+                  
                     <div class="col-md-6">
-                        <button class="btn btn-primary text-white" style="float:right" (click) = "addUser()">Sign Up</button>
+                        <button class="btn btn-primary text-white" [disabled] = "signup.form.invalid " style="float:right" (click) = "addUser()">Sign Up</button>
                     </div>
                 </div>
             </div>

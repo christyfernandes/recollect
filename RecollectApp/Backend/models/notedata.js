@@ -12,13 +12,16 @@ const userSchema = mongoose.Schema({
     details: { type: String, required: true },
     placeholderTitle: { type: String, required: true },
     placeholder: { type: String, required: true },
+     reminder:  { type: Number, required: true },
+     draft:  { type: Number, required: true },
+     trash: { type: Number, required: true }
 
 
  
   
 });
 
-module.exports = mongoose.model("tbl_note_data", userSchema);
+module.exports = mongoose.model("noteSchema", userSchema);
 
 
 

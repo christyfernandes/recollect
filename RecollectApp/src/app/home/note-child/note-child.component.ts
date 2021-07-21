@@ -69,11 +69,25 @@ export class NoteChildComponent implements OnInit {
   }
 
   saveNote(){
-    this.authService.addnote(this.nData).subscribe((response) =>{
+    this.authService.addnote(this.nData);
+  }
+  saveReminder(){
 
-      alert('Note Saved !');
-       
-    });
+    
+  this.authService.saveReminder(this.nData);
+     
+  
+}
+
+
+  saveDraft(){
+    this.authService.saveDraft(this.nData);
+
+  }
+  
+  saveTrash(){
+    this.authService.saveTrash(this.nData);
+
   }
 
 }

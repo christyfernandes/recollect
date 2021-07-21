@@ -1,43 +1,54 @@
-<div class="main-container">
+<div class="main-container" >
+  <div style="height:25px;background-color: lime;">
+    Note
+    </div>
+    <br/>
 
-    <div class="search-box-container" >
+  <div  *ngIf = "takeNoteFlag == false "
+  class="card" style="width: 17rem;"> 
+    <div class="card-body">
+       <br/>   
+        <h5 class="card-title">
+          <input type="text" class="form-control" (click)="showCard()" placeholder="Take a note.." >
+
+        </h5>
+      </div>
+  </div>
+
+  <div *ngIf = "takeNoteFlag == true "
+  class="card" style="width: 17rem;"> 
+    <div class="card-body">
+       <br/>   
+        <h5 class="card-title">
+          <input type="text" class="form-control" placeholder="Title" [(ngModel)]="nData.title">
+        </h5>
+        <p class="card-text">
+        <input type="text"  class="form-control" style="height: 200px;" name="details "  placeholder="Take a note.." (blur) = "saveNote()" [(ngModel)]="nData.details"/>
+       
+        </p>
+      </div>
+  </div>
+
+    <!-- <div class="search-box-container" >
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Search...">
-              <span class="icon is-small is-left">
-                <i class="fas fa-search text-danger"></i>
-              </span>
+              <input class="input" type="text" placeholder="Take a Note...">
+              
             </p>
           </div>
           <i class="fas fa-plus newText" style="color:blueviolet" (click)="addNewNote();">Add New Note</i>
-          
-    </div>
+      
+
+    </div> -->
+
+
+
+
+
+
      
     
     <div class="notes-list">
-    <!-- 
-    <app-note-card [title]="'First Notes'" [body]="'First notes bodyyyyyyyyyyyy'"></app-note-card>
-    <app-note-card [title]="'second Notes'" [body]="'second notes bodyyyyyyyyyyyy'"></app-note-card> -->
-
-         <!-- <div class="card-body" style="width: 350px;height:auto;">
-            <br/>
-        
-            <div class="card">
-            <h4 class="card-title" >infomation</h4>
-            <p class="card-text">jdihdjhskjz</p>
-            <br/><br/>
-            <div class="row">
-            <div class="col-md-6" style="text-align: left; ">
-                <button type="button" class="btn btn-default" style="background-color: yellowgreen;" routerLink="/homelink/trash">Trash</button>
-            </div>
-            <div class="col-md-6" style="text-align: left; ">
-                <button type="button" class="btn btn-default" style="background-color: rgb(228, 163, 23);" 
-                                       routerLink="/homelink/remainder"><i class="far fa-bell" style="color: yellowgreen;"></i>
-                                    </button>
-            </div>
-            </div>
-        </div>
-        </div>  -->
      
     
     <app-note-child  *ngFor=" let i of  noteDataArr" [nData]="i"  (notify)="deleteNoteElement($event)"> </app-note-child>

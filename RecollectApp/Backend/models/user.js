@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
   
 });
 
-module.exports = mongoose.model("tbl_user_basic_data", userSchema);
+module.exports = mongoose.model("userSchema", userSchema);
 
 
 

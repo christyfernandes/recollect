@@ -1,3 +1,16 @@
 .card {
     box-shadow: 0 0 10px 0 rgba(90, 54, 7, 0.26);
   }
+  @import '../../../main-style.scss';
+
+.main-container{
+    // display: flex;
+    // flex-direction: column;
+    // max-width: 500px;
+
+
+    // margin : auto;
+
+
+    padding-top : 100px;
+}
