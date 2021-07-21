@@ -11,11 +11,11 @@
   left: 0;
   width: 250px;
   height: 100%;
- background: #042331;
+  background:linear-gradient(to right, $pink,$blue);
  transition: all .5s ease;
 }
 .side-bar header{
-  background: #063146;
+  background:linear-gradient(to right, $pink,$blue);
   font-size: 22px;
   color: white;
   text-align: center;
@@ -32,6 +32,7 @@
   box-sizing: border-box;
   border-top: 1px solid rgba(255,255,255, .1);
   border-bottom: 1px solid black;
+  color: white;
 
 }
 

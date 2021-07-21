@@ -5,15 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-
-import { MainLayoutComponent } from './Pages/main-layout/main-layout.component';
-import { NotesListComponent } from './Pages/notes-list/notes-list.component';
 import { FormsModule } from '@angular/forms';
 import{  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -21,10 +19,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
     HeaderComponent,
-
-    MainLayoutComponent,
-    NotesListComponent,
     ErrorPopupComponent,
+    PageNotFoundComponent,
     
     
   ],

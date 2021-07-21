@@ -9,18 +9,18 @@ import { NoteData } from 'src/app/note-data';
 })
 export class NoteComponent implements OnInit {
 
-  noteD : any = new NoteData("","",0,"","","New Title","Add Details Here..");
-
+  noteD : any = new NoteData("","",0,"","","New Title","Add Details Here..","","","",);
 
   noteDataArr : any = [ ];
-
+takeNoteFlag :boolean = false;
+nData : any = new NoteData("","",this.noteDataArr.length,"","","New Title","Add Details Here..","","","");
 
 
   constructor( private authService : AuthService) { }
 
   ngOnInit(): void {
     console.log('*****inti******');
-    this.authService.getNoteData().subscribe((p: NoteData[])=>{
+    this.authService.getDraftNotesData().subscribe((p: NoteData[])=>{
        console.log('data received3 ::--- '+p);
        if(p != null){
         console.log('inside if notnull')
@@ -32,8 +32,15 @@ export class NoteComponent implements OnInit {
     })
 
   }
+  showCard(){
+    if(this.takeNoteFlag = true){
+    console.log("first card show");
+  }
+  else{
+ this.takeNoteFlag = false;
+  }
 
-
+  }
 
   addNewNote()
   {
@@ -41,7 +48,13 @@ export class NoteComponent implements OnInit {
     // console.log(" Length of Araay -- "+ this.noteDataArr.length);
     // this.noteD.indexPosition = this.noteDataArr.length;
     console.log(" After this.noteD.indexPosition -- "+ this.noteD.indexPosition);
-    this.noteDataArr.push(new NoteData("","",this.noteDataArr.length,"","","New Title","Add Details Here.."));
+    this.noteDataArr.push(new NoteData("","",this.noteDataArr.length,"","","New Title","Add Details Here..","","",""));
+  }
+  saveNote(){
+    this.authService.addnote(this.nData);
+    window.location.reload();
+    //this.showCard();
+    
   }
 
 

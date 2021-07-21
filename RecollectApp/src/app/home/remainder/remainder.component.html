@@ -1,28 +1,37 @@
 
 <div #container class="note-card-container">
+      
 
+  <div class="main-container">
+    <div style="height:25px;background-color: lime;">
+      Remainder
+      </div>
 
-<br/>
-<br/>
+ 
 
+<app-note-child  *ngFor=" let i of  noteDataArr" [nData]="i"  (notify)="deleteNoteElement($event)"> </app-note-child>
+    
 
-<div class="card" style="width: 25rem;">
+<!-- <div class="card" style="width: 17rem;">
+
+    
     
     <div class="card-body">
       <h5 class="card-title">
 
-            <input type="text" class="form-control" placeholder="Title"
-            >
+            <input type="text" class="form-control" placeholder="Title" >
 
       </h5>
       <p class="card-text">
         
-        <textarea type="text"  class="form-control" style="height: 100px;" name="details" 
-        >
+        <textarea type="text"  class="form-control" style="height: 100px;margin-top:px;" name="details"
+  >
 
         </textarea>
         
       </p>
+     
+
       <a routerLink="/homelink/note" class="btn btn-primary"><i  aria-hidden="true"></i>Note</a> &nbsp;&nbsp;
 
       <a routerLink="/homelink/trash" class="btn btn-primary">Trash</a>&nbsp;&nbsp;
@@ -30,8 +39,9 @@
       
       
     </div>
-  </div>
+  </div> -->
 
   <br/>
+  </div>
   </div>
 

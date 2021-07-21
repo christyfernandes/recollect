@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
  
-import { MainLayoutComponent } from './Pages/main-layout/main-layout.component';
-import { NotesListComponent } from './Pages/notes-list/notes-list.component';
 
 const routes: Routes = [
   { 
@@ -16,7 +15,10 @@ const routes: Routes = [
       loadChildren: () =>
         import('./home/home.module').then((m) => m.HomeModule),
       },
-
+{
+  path : '**',
+  component:PageNotFoundComponent
+}
 
  /* {path : '' , component: LoginComponent},
   {path : 'login' , component: LoginComponent},

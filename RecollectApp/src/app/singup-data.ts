@@ -5,6 +5,7 @@ export class SingupData {
         public lastName:any,
         public email: any,
         public password: any,
+        public confirmpassword: any,
         public  contactNumber:any,
         public address: any
     ){

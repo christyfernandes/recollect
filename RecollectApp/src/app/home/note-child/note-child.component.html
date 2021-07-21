@@ -6,24 +6,24 @@
 <br/>
 
 
-<div class="card" style="width: 25rem;">
+<div class="card" style="width: 17rem;">
     
     <div class="card-body">
           <tr>
-              <td class="tdCourcesStar">
+              <!-- <td class="tdCourcesStar">
                 <input type="checkbox" value="0">Public
                 &nbsp; <input type="checkbox" value="0">Private
                 <br/>
-              </td>
+              </td> -->
           </tr>
-        <br/>
+        <!-- <br/> -->
             <tr>
               <td class="tdCourcesStar">
                 <a href="">English</a> &nbsp; <a href="">Hindi</a>  &nbsp; <a href="">Marathi</a>
               </td>
             </tr>
             <br/>
-            <tr>
+            <!-- <tr>
               <td class="tdCourcesStar">
                 <i class="fa fa-star text-warning" aria-hidden="true"></i>
                 <i class="fa fa-star text-warning" aria-hidden="true"></i>
@@ -31,7 +31,7 @@
                 <i class="fa fa-star text-warning" aria-hidden="true"></i>
                 <i class="fa fa-star text-warning" aria-hidden="true"></i>
               </td>
-            </tr><br/>
+            </tr><br/> -->
       <h5 class="card-title">
 
             <input type="text" class="form-control" placeholder="Title" [(ngModel)]="nData.title">
@@ -44,12 +44,15 @@
         </textarea>
         
       </p>
-      <a routerLink="/homelink/remainder" class="btn btn-primary"><i class="fa fa-bell-o" aria-hidden="true"></i></a> &nbsp;&nbsp;
+      <a (click)="saveReminder()" title="Reminder"><i class="fa fa-bell-o" aria-hidden="true"></i></a> &nbsp;&nbsp;
 
-      <a routerLink="/homelink/trash"class="btn btn-primary "><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+      <a (click)="saveTrash()" title="Trash"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
 
-      <a (click)="deleteThisNote()" class="btn btn-primary "><i class="fa fa-times" style="color: white;"></i></a>&nbsp;&nbsp;
-      <a (click)="saveNote()" class="btn btn-primary" ><i class ="fa fa-floppy-o" style="color: white;"></i></a>&nbsp;&nbsp;
+      <!-- <a (click)="deleteThisNote()" title="Delete"><i class="fa fa-times"></i></a>&nbsp;&nbsp; -->
+      <a *ngIf="nData._id == ''  " (click)="saveNote()" title="Save" ><i class ="fa fa-floppy-o" ></i></a>&nbsp;&nbsp;
+      <a (click)="saveDraft()"  title="Undo"><i class ="fa fa-undo" ></i></a>&nbsp;&nbsp;
+
+      
 
 
     </div>

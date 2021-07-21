@@ -1,15 +1,15 @@
 @import '../../../main-style.scss';
-
+ 
 .main-container{
-    display: flex;
+   /* display: flex;
     flex-direction: column;
     max-width: 500px;
 
 
-    margin : auto;
+    margin : auto; */
 
 
-    padding-top : 150px;
+    padding-top : 100px;
 }
 
 .newText
@@ -25,4 +25,4 @@
 app-note-card{
     display: block;
     margin-bottom: 25px;;
-}
+} 

@@ -7,7 +7,10 @@ constructor(
     public title : any,
     public details : any,
     public placeholderTitle : any,
-    public placeholder : any
+    public placeholder : any,
+    public reminder: any,
+    public draft: any,
+    public trash: any
 )
 {
 

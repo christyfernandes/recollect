@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup ,FormControl,FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { SingupData } from 'src/app/singup-data';
@@ -12,13 +13,22 @@ export class NewSignUpComponent implements OnInit {
 
   account:any="/assets/image/account.svg";
 
-  signupModelForm = new SingupData('','','','','','','');
+  signupModelForm = new SingupData('','','','','','','','');
+   
+  passwordErrorFlag: boolean = false;
+  constructor(private auth:AuthService, private router: Router ,public formbuilder: FormBuilder ) {
+
   
-  constructor(private auth:AuthService, private router: Router ) { }
+    
+    
+   }
 
   ngOnInit(): void {
-  }
+    
+      
 
+    }
+  
 
   addUser()
   {
@@ -29,11 +39,24 @@ export class NewSignUpComponent implements OnInit {
     
     this.auth.save(this.signupModelForm).subscribe((response) =>{
 
-      alert('New User Registerd Succeesfully !');
+      // alert('New User Registerd Succeesfully !');
       this.router.navigate(['/newLogin'])
     });
 
+
     console.log(" ----  Data  ----- = "+ this.signupModelForm.contactNumber);
+  }
+  checkConfirmPassword(){
+   
+    
+    console.log('password is'+this.signupModelForm.password);
+
+    console.log('confirm passwordis :'+this.signupModelForm.confirmpassword);
+    if(this.signupModelForm.password != this.signupModelForm.confirmpassword){
+       this.passwordErrorFlag = true;
+      
+         
+    }
   }
 
 }

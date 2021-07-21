@@ -2,6 +2,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AuthDashBoardGuard } from '../auth-dash-board.guard';
+
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
  
 import { DefaultComponent } from './default/default.component';
 import { NoteComponent } from './note/note.component';
@@ -14,15 +18,30 @@ const routes: Routes = [
   { 
     path:'',
     component:DefaultComponent,
-    children:[
+    canActivate :[AuthDashBoardGuard],
+    
+     children:[
         {path: 'trash', 
-        component: TrashComponent
+        component: TrashComponent,
+        canActivate :[AuthDashBoardGuard]
+        
        },
        {path: 'note',
-       component: NoteComponent},
+       component: NoteComponent,
+       canActivate :[AuthDashBoardGuard]
+       
+       },
 
        {path:'remainder',
-      component:RemainderComponent}
+      component:RemainderComponent,
+      canActivate :[AuthDashBoardGuard]
+   
+    },
+
+      {
+        path : '**',
+        component:PageNotFoundComponent
+      }
       
     
     

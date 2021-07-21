@@ -19,4 +19,9 @@ export class DefaultComponent implements OnInit {
 
   }
 
+  logOut()
+  {
+    this.authService.logout();
+  }
+
 }
